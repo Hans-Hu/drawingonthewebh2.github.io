@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+audio {
+    position: fixed;
+    filter: drop-shadow(3px 3px 5px #333);
+    z-index: 100;
+}
+
+canvas {
+    position: absolute;
+}

@@ -1,0 +1,42 @@
+/*
+Drawing on the Web
+2 horizontally-aligned canvas elements
+*/
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgray;
+}
+
+#frame {
+  width: 1260px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  justify-content: space-evenly;
+}
+
+#controls {
+  margin-top: 20px;
+  width: 50%;
+  height: 120px;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+#controls > * {
+  margin: 0px;
+  text-align: center;
+  align-items: center;
+}
+
+canvas {
+  width: 600px;
+  height: 400px;
+}

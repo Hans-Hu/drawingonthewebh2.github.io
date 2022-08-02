@@ -1,0 +1,333 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background-color: #111;
+}
+
+audio {
+    width: 35vw;
+    max-height: min(6vw, 6vh);
+    max-width: 35vh;
+    position: relative;
+    top: min(40vw, 40vh);
+    left: min(22.5vw, 22.5vh);
+    transform: translate(-50%, -50%);
+    z-index: 210;
+    opacity: 0%;
+    transition: opacity 0.2s ease-in-out;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.4));
+    transition: top 0.07s ease-in-out, left 0.07s ease-in-out, width 0.07s ease-in-out, max-width 0.07s ease-in-out, opacity 0.07s ease-in-out;
+}
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100vw; /* using % somehow messes up filter on .container */
+    height: 100vh;
+    object-fit: cover;
+}
+
+.effects img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.container {
+    transition: all 0.3s ease-in-out;
+}
+
+.center {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.center-hover {
+    opacity: 80%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    height: 45vw;
+    max-height: 45vh;
+    width: min(45vw, 45vh);
+    transition: max-height 0.07s ease-in-out, height 0.07s ease-in-out, width 0.07s ease-in-out, opacity 0.1s ease-in-out;
+    filter: drop-shadow(12px 12px 10px rgba(0, 0, 0, 0.35));
+}
+
+.center-hover img {
+    border-radius: 9%;
+}
+
+.effects {
+    display: grid;
+    position: absolute;
+    top: 0;
+    left: 0;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    height: 100vh;
+    width: 100vw;
+}
+
+/* hover */
+
+#spring-hover {
+    grid-column: 1 / 5;
+    grid-row: 1 / 5;
+    z-index: 10;
+}
+
+#summer-hover {
+    grid-column: 5 / 9;
+    grid-row: 1 / 5;
+    z-index: 10;
+}
+
+#fall-hover {
+    grid-column: 5 / 9;
+    grid-row: 5 / 9;
+    z-index: 10;
+}
+
+#winter-hover {
+    grid-column: 1 / 5;
+    grid-row: 5 / 9;
+    z-index: 10;
+}
+
+#spring-hover:hover ~ .spring {
+    opacity: 1;
+}
+
+#summer-hover:hover ~ .summer {
+    opacity: 1;
+}
+
+#fall-hover:hover ~ .fall {
+    opacity: 1;
+}
+
+#winter-hover:hover ~ .winter {
+    opacity: 1;
+}
+
+.center-hover:hover {
+    height: 55vw;
+    max-height: 55vh;
+    width: min(55vw, 55vh);
+    opacity: 100%;
+    transition: max-height 0.3s ease-in-out, height 0.3s ease-in-out, width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.center-hover:hover audio {
+    transition: top 0.3s ease-in-out, left 0.3s ease-in-out, width 0.3s ease-in-out, max-width 0.3s ease-in-out, opacity 0.2s ease-in-out;
+    top: min(45vw, 45vh);
+    left: min(27.5vw, 27.5vh);
+    opacity: 70%;
+}
+
+.center-hover:hover ~ .container {
+    filter: brightness(0.5) blur(7px);
+}
+
+.center-hover:hover audio:hover {
+    opacity: 90%;
+    width: 40vw;
+    max-width: 40vh;
+}
+
+/* effects */
+
+.effect {
+    position: absolute;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.spring {
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+}
+
+.summer {
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+}
+
+.fall {
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+}
+
+.winter {
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+}
+
+.color {
+    mix-blend-mode: color;
+}
+
+.darken {
+    mix-blend-mode: darken;
+}
+
+.hard-light {
+    mix-blend-mode: hard-light;
+}
+
+.hue {
+    mix-blend-mode: hue;
+}
+
+.multiply {
+    mix-blend-mode: multiply;
+}
+
+.saturation {
+    mix-blend-mode: saturation;
+}
+
+.screen {
+    mix-blend-mode: screen;
+}
+
+.soft-light {
+    mix-blend-mode: soft-light;
+}
+
+.fill {
+    height: 100vh;
+    width: 100vw;
+}
+
+#noise {
+    opacity: 12%;
+    z-index: 300;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+
+
+
+
+#clouds1, #clouds2 {
+    transition: opacity 4s ease-in-out;
+}
+
+#clouds2 {
+    filter: opacity(90%);
+}
+
+#rain {
+    filter: brightness(200%) opacity(40%);
+}
+
+#spring-e1 {
+    background-color: hsl(162, 17%, 43%);
+    filter: opacity(50%);
+}
+
+#spring-e2 {
+    background: linear-gradient(0deg, hsla(144, 16%, 73%, 80%) 20%,  rgba(255,255,255,0) 75%);
+    filter: opacity(100%);
+}
+
+#spring-e3 {
+    background: linear-gradient(0deg, rgba(255,255,255,0) 30%,  hsl(175, 38%, 24%) 100%);
+    filter: opacity(20%);
+}
+
+#spring-e4 {
+    background-color: rgb(34, 39, 39);
+    filter: opacity(20%);
+}
+
+
+
+
+
+#lensflare {
+    filter: hue-rotate(40deg) opacity(40%);
+}
+
+#sunlight {
+    filter: hue-rotate(20deg) opacity(40%) contrast(120%) brightness(90%);
+    height: 120vh;
+}
+
+
+
+
+
+#leaves {
+    filter: saturate(150%) blur(0.8px) brightness(120%) opacity(80%);
+}
+
+#lights {
+    filter: opacity(20%);
+    height: 170vh;
+    width: 170vw;
+}
+
+#fall-e1 {
+    background-color: hsl(20, 100%, 50%);
+    filter: opacity(40%)
+}
+
+#fall-e2 {
+    background: linear-gradient(0deg, rgba(255,255,255,0) 20%,  hsl(40, 100%, 50%) 100%);
+    filter: opacity(20%);
+}
+
+#fall-e3 {
+    background-color: hsl(25, 100%, 50%);
+    filter: opacity(40%);
+}
+
+
+
+
+
+#snow {
+    filter: opacity(70%);
+}
+
+#winter-e1 {
+    background-color: blue;
+    filter: opacity(45%);
+}
+
+#winter-e2 {
+    background: linear-gradient(0deg, rgba(255,255,255,0) 30%, hsl(240, 100%, 100%) 100%);
+    filter: opacity(70%);
+}
+
+#winter-e3 {
+    background: linear-gradient(0deg, rgba(255,255,255,0) 30%, hsl(240, 100%, 50%) 100%);
+    filter: opacity(10%);
+}
+
+#winter-e4 {
+    background: linear-gradient(0deg, rgba(255,255,255,0.1) 20%, rgba(255,255,255,1) 85%);
+    filter: opacity(70%);
+}

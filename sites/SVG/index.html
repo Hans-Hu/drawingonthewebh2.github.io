@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>SVG</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300&display=swap');
+        html {
+            display: table;
+            margin: auto;
+        }
+
+        body {
+            background-color: #333;
+            color: #EEE;
+            font-family: 'Crimson Pro';
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        p {
+            text-align: center;
+            font-size: 5em;
+            margin-top: 15vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            width: 60vw;
+            align-items: center;
+            margin: auto;
+        }
+
+        .NY {
+            fill: #AAA;
+            width: 80%;
+            height: auto;
+            transition: fill 0.3s ease-in-out;
+        }
+
+        .NY:hover {
+            fill: #AAC;
+        }
+
+    </style>
+</head>
+<body>
+    <p>5 New York State Symbols</p>
+    <div class="container">
+        <svg class="NY"><use href="symbol-defs.svg#apple" /></svg>
+        <svg class="NY"><use href="symbol-defs.svg#bird" /></svg>
+        <svg class="NY"><use href="symbol-defs.svg#ladybug" /></svg>
+        <svg class="NY"><use href="symbol-defs.svg#leaf" /></svg>
+        <svg class="NY"><use href="symbol-defs.svg#rose" /></svg>
+    </div>
+</body>
+</html>

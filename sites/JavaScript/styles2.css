@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    overflow: hidden;
+    background-color: black;
+}
+
+#scene {
+    width: 8vw;
+    height: 8vw;
+    perspective: 32vw;
+    transition: transform 1s ease-in-out;
+}
+
+.polyhedron {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    fill: rgb(103, 126, 204);
+    opacity: 0.5;
+}
+
+.polyhedron:nth-of-type(2) .face {
+    fill: rgb(153, 206, 236);
+    filter: blur(2px);
+    opacity: 0.3;
+}
+
+#scene:active {
+    transform: scale(1.7);
+}

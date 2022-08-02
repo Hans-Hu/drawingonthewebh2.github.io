@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300&display=swap');
+
+body {
+    background-color: #333;
+    padding: 0;
+    margin: 0;
+}
+
+#top-bar {
+    padding: 0.3em 0;
+    width: 100%;
+    background-color: #111;
+    text-align: center;
+    color: #DDD;
+    font-family: 'Crimson Pro';
+    font-size: 2em;
+    letter-spacing: 0.4em;
+}
+
+#top-bar p {
+    margin-top: 0.2em;
+    margin-bottom: 0;
+    font-size: 0.6em;
+    letter-spacing: 0.3em;
+}
+
+.container {
+    height: calc(100vh - 4.97em);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.container a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 2px dashed #222;
+    text-decoration: none;
+    color: #DDD;
+    font-family: 'Crimson Pro';
+    font-size: min(3em, 6vw);
+}

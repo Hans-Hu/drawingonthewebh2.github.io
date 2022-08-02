@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>HTML and CSS</title>
+</head>
+<body>
+    <div class="center-hover">
+        <svg class="center" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="1.5" width="97" height="97" rx="7" fill="#222"/>
+        </svg>
+        <img class="center" src="media/tamayura.png" alt="">
+        <svg class="center" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="1.5" width="97" height="97" rx="7" stroke="#111" stroke-width="3" fill="none"/>
+        </svg>
+        <audio id="audio" autoplay loop controls>
+            <source src="media/tamayura.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <img id="noise" class="multiply effect" src="media/noise.png" alt="">
+    <div class="container">
+        <video id="bg" src="media/bg.mp4" type="video/mp4" autoplay muted loop playsinline></video>
+        <div class="effects">
+            <div id="spring-hover"></div>
+            <div id="summer-hover"></div>
+            <div id="fall-hover"></div>
+            <div id="winter-hover"></div>
+
+            <video id="rain" class="spring screen effect" src="media/rain.mp4" type="video/mp4" autoplay muted loop playsinline></video>
+            <img id="clouds1" class="spring winter darken effect" src="media/clouds1.png" alt="">
+            <img id="clouds2" class="spring winter darken effect" src="media/clouds2.png" alt="">
+            <div id="spring-e1" class="spring fill color effect"></div>
+            <div id="spring-e2" class="spring fill color effect"></div>
+            <div id="spring-e3" class="spring fill effect"></div>
+            <div id="spring-e4" class="spring fill effect"></div>
+
+            <video id="sunlight" class="summer screen effect" src="media/sunlight.mp4" type="video/mp4" autoplay muted loop playsinline></video>
+            <video id="lensflare" class="summer screen effect" src="media/lensflare.mp4" type="video/mp4" autoplay muted loop playsinline></video>
+            <script>
+                var vid = document.getElementById("lensflare");
+                vid.playbackRate = 0.7;
+            </script>
+
+            <video id="leaves" class="fall effect" src="media/leaves.webm" type="video/webm" autoplay muted loop playsinline></video>
+            <script>
+                var vid = document.getElementById("leaves");
+                vid.playbackRate = 1.4;
+            </script>
+            <video id="lights" class="fall hard-light effect" src="media/lights.mp4" type="video/mp4" autoplay muted loop playsinline></video>
+            <script>
+                var vid = document.getElementById("lights");
+                vid.playbackRate = 0.7;
+            </script>
+            <div id="fall-e1" class="fall fill hue effect"></div>
+            <div id="fall-e2" class="fall fill effect"></div>
+            <div id="fall-e3" class="fall fill soft-light effect"></div>
+
+            <video id="snow" class="winter soft-light effect" src="media/snow.mp4" type="video/mp4" autoplay muted loop playsinline></video>
+            <div id="winter-e1" class="winter fill hue effect"></div>
+            <div id="winter-e2" class="winter fill saturation effect"></div>
+            <div id="winter-e3" class="winter fill color effect"></div>
+            <div id="winter-e4" class="winter fill effect"></div>
+        </div>
+    </div>
+</body>
+</html>

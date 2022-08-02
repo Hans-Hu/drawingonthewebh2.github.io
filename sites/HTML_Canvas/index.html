@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML Canvas</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      #c1 {background-color: white;}
+      #c2 {background-color: black;}
+    </style>
+  </head>
+
+  <body>
+    <div id="frame">
+      <canvas id="c1" width="600" height="400"></canvas>
+      <canvas id="c2" width="600" height="400"></canvas>
+      <div id="controls">
+        <p>Colors</p>
+        <p class="lines"></p>
+        <p class="spacing"></p>
+        <p class="duplicates"></p>
+        <p class="speed"></p>
+        <input type="color" id="background" name="background" value="#FFFFFF">
+        <button class="lines">Increase Lines</button>
+        <button class="spacing">Increase Line Spacing</button>
+        <button class="duplicates">Increase Duplicates</button>
+        <button class="speed">Increase Speed</button>
+        <input type="color" id="line-color" name="line-color" value="#000000">
+        <button class="lines">Decrease Lines</button>
+        <button class="spacing">Decrease Line Spacing</button>
+        <button class="duplicates">Decrease Duplicates</button>
+        <button class="speed">Decrease Speed</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

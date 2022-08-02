@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web APIs</title>
+    <script>
+        let luminosity;
+        let light;
+        let idleTime = 0;
+        let timerInterval;
+
+        getLuminosity = async () => {
+            let url = "https://api.opensensemap.org/boxes/5daa13a725683a001a2c3a66/sensors/5daa13a725683a001a2c3a6a";
+
+            let response = await fetch(url);
+
+            if (response.ok) {
+                let json = await response.json();
+                if (luminosity != json.lastMeasurement.value) {
+                    luminosity = json.lastMeasurement.value;
+                    console.log(luminosity);
+                    updateColor(scale(luminosity));
+                }
+            }
+        }
+
+        scale = (x) => {
+            if (x < 4000) return Math.pow(x, 0.6503008);
+            else return 255 - (28000 / Math.pow(x, 0.8059527));
+        }
+
+        updateColor = (x) => {
+            if (x >= 30)
+                document.body.style.backgroundColor = `rgb(${x}, ${x}, ${x})`;
+            else
+                document.body.style.backgroundColor = `rgb(${Math.pow(30, 0.5) * Math.pow(x, 0.5)}, ${30 / Math.pow(30, 0.7) * Math.pow(x, 0.7)}, ${x})`;
+        }
+
+        moveLight = (event) => {
+            idleTime = 0;
+            light.style.left = event.clientX - 150 + "px";
+            light.style.top = event.clientY - 150 + "px";
+            light.style.opacity = 0.7;
+            if (timerInterval == null)
+                timerInterval = setInterval(timerIncrement, 1000)
+        }
+
+        timerIncrement = () => {
+            idleTime = idleTime + 1;
+            if (idleTime > 2 && idleTime <= 5)
+                light.style.opacity = 0.4;
+            else if (idleTime > 5) {
+                light.style.opacity = 0;
+            }
+        }
+
+        document.addEventListener('mousemove', function() {
+            if (luminosity < 200) moveLight(event);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            light = document.querySelector("#light");
+            light.style.opacity = 0;
+            getLuminosity();
+            setTimeout(function() {
+                document.body.style.transition = 'background-color 60s linear';
+            }, 2000);
+        });
+
+        setInterval(getLuminosity, 10 * 1000);
+    </script>
+    <style>
+        @font-face {
+            font-family: "Comfortaa";
+            src: url("fonts/Comfortaa-Light.ttf");
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Comfortaa";
+            background-color: #888;
+            transition: background-color 0.1s linear;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        #container {
+            width: 50%;
+            line-height: 1.6;
+        }
+
+        #light {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s linear;
+        }
+    </style>
+</head>
+<body>
+    <img id="light" src="media/light.png" alt="light">
+    <div id="container">
+        <p>openSenseMap API <a href="https://api.opensensemap.org/" target="_blank" rel="noopener noreferrer">https://api.opensensemap.org/</a>
+            is an HTTP REST API used by <a href="https://opensensemap.org" target="_blank" rel="noopener noreferrer">https://opensensemap.org</a>.
+            openSenseMap is a platform where users around the world (mostly Europe) can upload and share sensor data from their senseBox to
+            openSenseMap. Users can use the API to update the data on the site with new data from their senseBox. Sensor data can also be
+            requested from any senseBox. Sensor data includes various things like temperature, humidity, and air pressure. Data can be updated
+            whenever the user chooses to or automated to update at certain intervals. The sensorBox used in this page is located in Sparta, New
+            Jersey and updates every minute. The sensor data used is the luminosity.</p>
+    </div>
+</body>
+</html>

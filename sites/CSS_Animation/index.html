@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- blur filter on chrome/edge is a bit wacky with 3d-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        #scene {
+            width: 100px;
+            height: 100px;
+            perspective: 400px;
+            transition: perspective 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .polyhedron {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+        }
+
+        .polyhedron-2 {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+        }
+        
+        .polyhedron .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            fill: rgb(103, 126, 204);
+            opacity: 0.5;
+            transition: fill 1s ease-in-out;
+        }
+
+        .polyhedron-2 .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            fill: black;
+            opacity: 0.3;
+            transition: fill 1s ease-in-out, filter 1s ease-in-out;
+        }
+
+        .polyhedron .face:nth-child(1) {
+            transform: rotateX(0deg) translateZ(100px);
+        }
+        
+        .polyhedron .face:nth-child(2) {
+            transform: rotate(180deg) rotateX(63.4349488229deg) translateZ(100px);
+        }
+        .polyhedron .face:nth-child(3) {
+            transform: rotate(252deg) rotateX(63.4349488229deg) translateZ(100px);
+        }
+        .polyhedron .face:nth-child(4) {
+            transform: rotate(324deg) rotateX(63.4349488229deg) translateZ(100px);
+        }
+        .polyhedron .face:nth-child(5) {
+            transform: rotate(36deg) rotateX(63.4349488229deg) translateZ(100px);
+        }
+        .polyhedron .face:nth-child(6) {
+            transform: rotate(108deg) rotateX(63.4349488229deg) translateZ(100px);
+        }
+
+
+        .polyhedron .face:nth-child(7) {
+            transform: rotateX(180deg) translateZ(100px);
+        }
+
+        .polyhedron .face:nth-child(8) {
+            transform: rotate(180deg) rotateX(243.4349488229deg) translateZ(100px);
+        }
+        .polyhedron .face:nth-child(9) {
+            transform: rotate(252deg) rotateX(243.4349488229deg) translateZ(100px);
+        }
+        .polyhedron .face:nth-child(10) {
+            transform: rotate(324deg) rotateX(243.4349488229deg) translateZ(100px);
+        }
+        .polyhedron .face:nth-child(11) {
+            transform: rotate(36deg) rotateX(243.4349488229deg) translateZ(100px);
+        }
+        .polyhedron .face:nth-child(12) {
+            transform: rotate(108deg) rotateX(243.4349488229deg) translateZ(100px);
+        }
+
+        .polyhedron-2 .face:nth-child(1) {
+            transform: rotateX(0deg) translateZ(150px);
+        }
+        
+        .polyhedron-2 .face:nth-child(2) {
+            transform: rotate(180deg) rotateX(63.4349488229deg) translateZ(150px);
+        }
+        .polyhedron-2 .face:nth-child(3) {
+            transform: rotate(252deg) rotateX(63.4349488229deg) translateZ(150px);
+        }
+        .polyhedron-2 .face:nth-child(4) {
+            transform: rotate(324deg) rotateX(63.4349488229deg) translateZ(150px);
+        }
+        .polyhedron-2 .face:nth-child(5) {
+            transform: rotate(36deg) rotateX(63.4349488229deg) translateZ(150px);
+        }
+        .polyhedron-2 .face:nth-child(6) {
+            transform: rotate(108deg) rotateX(63.4349488229deg) translateZ(150px);
+        }
+
+
+        .polyhedron-2 .face:nth-child(7) {
+            transform: rotateX(180deg) translateZ(150px);
+        }
+
+        .polyhedron-2 .face:nth-child(8) {
+            transform: rotate(180deg) rotateX(243.4349488229deg) translateZ(150px);
+        }
+        .polyhedron-2 .face:nth-child(9) {
+            transform: rotate(252deg) rotateX(243.4349488229deg) translateZ(150px);
+        }
+        .polyhedron-2 .face:nth-child(10) {
+            transform: rotate(324deg) rotateX(243.4349488229deg) translateZ(150px);
+        }
+        .polyhedron-2 .face:nth-child(11) {
+            transform: rotate(36deg) rotateX(243.4349488229deg) translateZ(150px);
+        }
+        .polyhedron-2 .face:nth-child(12) {
+            transform: rotate(108deg) rotateX(243.4349488229deg) translateZ(150px);
+        }
+
+        #scene:hover {
+            perspective: 250px;
+            transform: scale(1.1);
+        }
+
+        #scene:active {
+            perspective: 180px;
+            transform: scale(1.3);
+        }
+
+        #scene:hover .polyhedron-2 .face {
+            fill: rgb(153, 206, 236);
+            filter: blur(2px);
+        }
+
+        #scene:active .polyhedron-2 .face {
+            fill: rgb(153, 206, 236);
+            filter: blur(15px);
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotateX(10deg) rotateY(0deg);
+            }
+
+            to {
+                transform: rotateX(10deg) rotateY(360deg);
+            }
+        }
+
+        .polyhedron {
+            animation-name: spin;
+            animation-duration: 6s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes spin-2 {
+            from {
+                transform: rotateX(10deg) rotateY(0deg) rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateX(10deg) rotateY(360deg) rotateZ(360deg);
+            }
+        }
+
+        .polyhedron-2 {
+            animation-name: spin-2;
+            animation-duration: 8s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+    </style>
+</head>
+<body>
+    <svg display="none">
+        <symbol id="pentagon" viewBox="0 0 600 600">
+            <path d="M300,21l264.6,192.3l-101,311.1H136.4l-101-311.1L300,21z"/>
+        </symbol>
+    </svg>
+    <div id="scene">
+        <div class="polyhedron-2">
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+        </div>
+        <div class="polyhedron">
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+            <svg class="face"><use href="#pentagon"/></svg>
+        </div>
+    </div>
+</body>
+</html>
